@@ -1,0 +1,29 @@
+{
+  "name": "@klapeks/module-encryption",
+  "description": "Module encryption for hidding src/dist code",
+  "version": "0.0.1",
+  "type": "commonjs",
+  "author": "Klapeks",
+  "license": "ISC",
+  "bin": {
+    "encrypt-folder": "cli.js",
+    "decrypt-folder": "cli.js",
+    "encrypt-module": "cli.js",
+    "decrypt-module": "cli.js",
+    "module-encryption": "cli.js"
+  },
+  "scripts": {
+    "test-encrypt": "tsc && npx encrypt-folder --secret test",
+    "test-decrypt": "tsc && npx decrypt-folder --secret test"
+  },
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Klapeks/module-encryption"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {}
+}
