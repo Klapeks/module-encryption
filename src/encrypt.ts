@@ -10,8 +10,7 @@ function encrytBuffer(buffer: Buffer, secret: any): string {
 }
 
 export function encrypt(source: string, dist: string) {
-    const SECRET = 'no secret';
-    // const SECRET = config.secret();
+    const SECRET = config.secret();
 
     if (source[0] !== '/') source = mPath.join(process.cwd(), source);
     if (dist[0] !== '/') dist = mPath.join(process.cwd(), dist);

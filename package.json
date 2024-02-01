@@ -13,8 +13,8 @@
     "module-encryption": "cli.js"
   },
   "scripts": {
-    "test-encrypt": "tsc && npx encrypt-folder --secret test",
-    "test-decrypt": "tsc && npx decrypt-folder --secret test"
+    "test-encrypt": "tsc && npx encrypt-folder",
+    "test-decrypt": "tsc && npx decrypt-folder"
   },
   "keywords": [],
   "repository": {
@@ -25,5 +25,7 @@
     "@types/node": "^18.11.18",
     "typescript": "^4.7.4"
   },
-  "dependencies": {}
+  "dependencies": {
+    "dotenv": "^16.4.1"
+  }
 }
