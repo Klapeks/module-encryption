@@ -17,7 +17,7 @@ function init(args) {
 
     if (args[0].endsWith('encrypt-folder') || args[0].endsWith('encrypt-module')) {
         var index = require('./dist/index');
-        index.encrypt(args[1] || './src', args[2] || '.');
+        index.encrypt(args[1] || './dist', args[2] || '.');
         return;
     }
     if (args[0].endsWith('decrypt-folder') || args[0].endsWith('encrypt-module')) {

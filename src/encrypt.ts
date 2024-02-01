@@ -1,12 +1,10 @@
 import fs from 'fs';
 import mPath from 'path';
 import config from './config';
+import { encryptBuffer } from './crypto';
 
 function isDirectory(path: string) {
     return fs.statSync(path).isDirectory();
-}
-function encrytBuffer(buffer: Buffer, secret: any): string {
-    return buffer.toString('base64');
 }
 
 export function encrypt(source: string, dist: string) {
@@ -30,8 +28,9 @@ export function encrypt(source: string, dist: string) {
         const relPath = mPath.relative(source, path);
         console.log("Encrypting path: ", relPath, ' <- ', path);
 
-        const fileData = encrytBuffer(fs.readFileSync(path), SECRET);
-        fs.appendFileSync(dist, fileData.length + " " + relPath + '\r\n' + fileData + '\r\n');
+        const fileData = encryptBuffer(fs.readFileSync(path), SECRET).toString('base64');
+        const fileInfo = encryptBuffer(fileData.length + " " + relPath, SECRET).toString('base64');
+        fs.appendFileSync(dist, fileInfo + '\r\n' + fileData + '\r\n');
     }
 
     fs.writeFileSync(dist, '');

@@ -2,6 +2,7 @@ import fs from 'fs';
 import mPath from 'path';
 import readline from 'readline';
 import config from './config';
+import { decryptedBuffer } from './crypto';
 
 function isDirectory(path: string) {
     return fs.statSync(path).isDirectory();
@@ -33,6 +34,8 @@ export function decrypt(source: string, dist: string) {
     let file = '';
     rl.on('line', (line) => {
         try {
+            if (!line) return;
+            line = decryptedBuffer(Buffer.from(line, 'base64'), SECRET).toString();
             if (!file) {
                 let len = line.indexOf(' ');
                 if (!len || len < 0) throw "Invalid order: can't get length of file";
@@ -45,7 +48,7 @@ export function decrypt(source: string, dist: string) {
             console.log('decrypting file', file);
             file = mPath.join(dist, file);
             fs.mkdirSync(mPath.dirname(file), { recursive: true });
-            fs.writeFileSync(file, decryptLine(line, SECRET));
+            fs.writeFileSync(file, line);
             file = '';
             // fs.writeFileSync()
         } catch (err) {
