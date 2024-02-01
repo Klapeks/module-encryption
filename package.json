@@ -13,8 +13,8 @@
     "module-encryption": "cli.js"
   },
   "scripts": {
-    "test-encrypt": "tsc && npx encrypt-folder",
-    "test-decrypt": "tsc && npx decrypt-folder"
+    "test-encrypt": "tsc && npx encrypt-folder --env test.env",
+    "test-decrypt": "tsc && npx decrypt-folder --env test.env"
   },
   "keywords": [],
   "repository": {

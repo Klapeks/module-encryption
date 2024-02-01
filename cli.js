@@ -12,6 +12,11 @@ function init(args) {
         process.env.MODULE_ENCRYPTION_SECRET = args[i+1];
         args[i] = args[i+1] = undefined;
     }
+    if (args.includes('--env')) {
+        const i = args.indexOf('--env');
+        require('dotenv').config({ path: args[i+1] });
+        args[i] = args[i+1] = undefined;
+    }
     args = args.filter(Boolean);
 
 

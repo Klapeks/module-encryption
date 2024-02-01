@@ -6,3 +6,4 @@ test
 encrypted.module
 lib
 .env
+test.env

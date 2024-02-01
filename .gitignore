@@ -4,3 +4,4 @@ dist
 encrypted.module
 lib
 .env
+test.env
